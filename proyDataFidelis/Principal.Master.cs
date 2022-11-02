@@ -18,6 +18,7 @@ namespace proyDataFidelis
                 else
                 {
                     lblUsuario.Text = Session["usuario"].ToString();
+                    lblSistema.Text = Session["sistema"].ToString();
                 }
             }
 
@@ -32,7 +33,7 @@ namespace proyDataFidelis
                 {
                     string consulta = "id_datos='" + id.Text + "'";
                     Repeater rSegmentos = (Repeater)e.Item.FindControl("Repeater2");
-                    rSegmentos.DataSource = Clases.Usuarios.PR_SEG_GET_MENUS_ROL(lblUsuario.Text, Int64.Parse(id.Text));
+                    rSegmentos.DataSource = Clases.Usuarios.PR_SEG_GET_MENUS_ROL(lblUsuario.Text, Int64.Parse(id.Text),lblSistema.Text);
                     rSegmentos.DataBind();
                 }
 

@@ -52,7 +52,7 @@ namespace proyDataFidelis
             {
                 //Clases.enviar_correo objC = new Clases.enviar_correo();
                 //string resp_email = objC.enviar("ernesto.barron@gmail.com", "Confirmacion de requisitos", "Pruebas de envio de correo.", "");
-
+                Session["sistema"] = ddlSistema.SelectedValue;
                 Session["usuario"] = txtUsuario.Text;
                 Response.Redirect("dashboard.aspx");
                 lblAviso.Text = "";
@@ -77,6 +77,11 @@ namespace proyDataFidelis
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su password NO se reseteo correctamente a 123');", true);
             }
+        }
+
+        protected void ddlSistema_DataBound(object sender, EventArgs e)
+        {
+            ddlSistema.Items.Insert(0, "SELEECIONAR SISTEMA");
         }
     }
 }

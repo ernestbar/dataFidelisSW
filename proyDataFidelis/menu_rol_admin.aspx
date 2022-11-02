@@ -7,11 +7,13 @@
 	<asp:ObjectDataSource ID="odsMenusNoAsignado" runat="server" SelectMethod="PR_SEG_GET_MENUS_A_ASIGNAR" TypeName="proyDataFidelis.Clases.Menus_roles">
 		<SelectParameters>
 			<asp:ControlParameter ControlID="ddlRol" Name="PB_ROL_ID_ROL" Type="String" />
+			<asp:ControlParameter ControlID="lblSistema" Name="PV_SISTEMA" Type="String" />
         </SelectParameters>
 		</asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsMenusAsignado" runat="server" SelectMethod="PR_SEG_GET_MENUS_ASIGNADOS" TypeName="proyDataFidelis.Clases.Menus_roles">
 		<SelectParameters>
 			<asp:ControlParameter ControlID="ddlRol" Name="PB_ROL_ID_ROL" Type="String" />
+			<asp:ControlParameter ControlID="lblSistema" Name="PV_SISTEMA" Type="String" />
         </SelectParameters>
 		</asp:ObjectDataSource>
 	
@@ -51,6 +53,7 @@
 			<asp:Label ID="lblCodMenu" runat="server" Text="" Visible="false"></asp:Label>
 			<asp:Label ID="lblAviso" runat="server" ForeColor="Blue" Font-Size="Medium" Text=""></asp:Label>
             <asp:Label ID="lblCodMenuRol" runat="server" Visible="false" Text=""></asp:Label>
+			<asp:Label ID="lblSistema" runat="server" Visible="false" Text=""></asp:Label>
 			<!-- begin form-group row -->
 										<div class="form-group row m-b-10">
 											

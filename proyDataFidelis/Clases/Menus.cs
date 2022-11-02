@@ -19,7 +19,8 @@ namespace proyDataFidelis.Clases
         private string _PB_COD_MENU_PADRE = "";
         private string _PV_DESCRIPCIONMEN = "";
         private string _PV_DETALLE = "";
-        
+        private string _PV_SISTEMAS = "";
+
         private string _PV_USUARIO = "";
         private string _PV_ESTADOPR = "";
         private string _PV_DESCRIPCIONPR = "";
@@ -31,6 +32,7 @@ namespace proyDataFidelis.Clases
         public string PB_COD_MENU_PADRE { get { return _PB_COD_MENU_PADRE; } set { _PB_COD_MENU_PADRE = value; } }
         public string PV_DESCRIPCIONMEN { get { return _PV_DESCRIPCIONMEN; } set { _PV_DESCRIPCIONMEN = value; } }
         public string PV_DETALLE { get { return _PV_DETALLE; } set { _PV_DETALLE = value; } }
+        public string PV_SISTEMAS { get { return _PV_SISTEMAS; } set { _PV_SISTEMAS = value; } }
         public string PV_USUARIO { get { return _PV_USUARIO; } set { _PV_USUARIO = value; } }
         public string PV_ESTADOPR { get { return _PV_ESTADOPR; } set { _PV_ESTADOPR = value; } }
         public string PV_DESCRIPCIONPR { get { return _PV_DESCRIPCIONPR; } set { _PV_DESCRIPCIONPR = value; } }
@@ -45,7 +47,7 @@ namespace proyDataFidelis.Clases
             RecuperarDatos();
         }
         public Menus(string pV_TIPO_OPERACION, string pB_COD_MENU, string pB_COD_MENU_PADRE, 
-         string pV_DESCRIPCIONMEN, string pV_DETALLE, string pV_USUARIO)
+         string pV_DESCRIPCIONMEN, string pV_DETALLE, string pV_USUARIO,string pV_SISTEMAS)
         {
             _PV_TIPO_OPERACION = pV_TIPO_OPERACION;
             _PB_COD_MENU = pB_COD_MENU;
@@ -53,6 +55,7 @@ namespace proyDataFidelis.Clases
             _PV_DESCRIPCIONMEN = pV_DESCRIPCIONMEN;
             _PV_DETALLE = pV_DETALLE;
             _PV_USUARIO = pV_USUARIO;
+            _PV_SISTEMAS = pV_SISTEMAS;
         }
         #endregion
 
@@ -129,6 +132,7 @@ namespace proyDataFidelis.Clases
 
                 db1.AddInParameter(cmd, "PV_DESCRIPCIONMEN", DbType.String, _PV_DESCRIPCIONMEN);
                 db1.AddInParameter(cmd, "PV_DETALLE", DbType.String, _PV_DETALLE);
+                db1.AddInParameter(cmd, "PV_SISTEMAS", DbType.String, _PV_SISTEMAS);
                 db1.AddInParameter(cmd, "PV_USUARIO", DbType.String, _PV_USUARIO);
                 db1.AddOutParameter(cmd, "PV_ESTADOPR", DbType.String, 30);
                 db1.AddOutParameter(cmd, "PV_DESCRIPCIONPR", DbType.String, 250);

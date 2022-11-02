@@ -55,7 +55,7 @@ namespace proyDataFidelis.Clases
 
         #region Métodos que NO requieren constructor
 
-        public static DataTable PR_SEG_GET_MENUS_A_ASIGNAR(string PB_ROL_ID_ROL)
+        public static DataTable PR_SEG_GET_MENUS_A_ASIGNAR(string PB_ROL_ID_ROL, string PV_SISTEMA)
         {
 
 
@@ -64,11 +64,12 @@ namespace proyDataFidelis.Clases
                 db1.AddInParameter(cmd, "PB_ROL_ID_ROL", DbType.String, null);
             else
                 db1.AddInParameter(cmd, "PB_ROL_ID_ROL", DbType.String, PB_ROL_ID_ROL);
+            db1.AddInParameter(cmd, "PV_SISTEMA", DbType.String, PV_SISTEMA);
             cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
             return db1.ExecuteDataSet(cmd).Tables[0];
         }
 
-        public static DataTable PR_SEG_GET_MENUS_ASIGNADOS(string PB_ROL_ID_ROL)
+        public static DataTable PR_SEG_GET_MENUS_ASIGNADOS(string PB_ROL_ID_ROL,string PV_SISTEMA)
         {
 
 
@@ -77,6 +78,7 @@ namespace proyDataFidelis.Clases
                 db1.AddInParameter(cmd, "PB_ROL_ID_ROL", DbType.String, null);
             else
                 db1.AddInParameter(cmd, "PB_ROL_ID_ROL", DbType.String, PB_ROL_ID_ROL);
+            db1.AddInParameter(cmd, "PV_SISTEMA", DbType.String, PV_SISTEMA);
             cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
             return db1.ExecuteDataSet(cmd).Tables[0];
         }

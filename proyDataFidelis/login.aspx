@@ -40,9 +40,9 @@
 			<div class="news-feed">
 				<div class="news-image" style="background-image: url(assets/img/login-bg/fondo_login.jpg)"></div>
 				<div class="news-caption">
-					<h4 class="caption-title"><b>Amas</b>Cuotas</h4>
+					<h4 class="caption-title"><b>Porta</b>folio</h4>
 					<p>
-						Hacemos tus sueños de volar, realidad.
+						Sistema.
 					</p>
 				</div>
 			</div>
@@ -51,18 +51,26 @@
 			<div class="right-content">
 				<!-- begin login-header -->
 				<div class="login-header">
-					<div class="brand">
-                        <img src="assets/img/logo/logo-admin.png" />
-						<span class="logo"></span> <b>Ingreso</b> AmasCuotas
-						<%--<small>responsive bootstrap 3 admin template</small>--%>
-					</div>
+					<img src="assets/img/logo/bannerportafolio.png"  height="135"/>
+						
+				
 					<div class="icon">
 						<i class="fa fa-sign-in"></i>
 					</div>
 				</div>
 				<!-- end login-header -->
+				<asp:ObjectDataSource ID="odsServidores" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="proyDataFidelis.Clases.Dominios">
+					<SelectParameters>
+						<asp:Parameter Name="PV_DOMINIO" DefaultValue="SISTEMAS" />
+					</SelectParameters>
+				</asp:ObjectDataSource>
 				<!-- begin login-content -->
 				<div class="login-content">
+						<div class="form-group m-b-15">
+                            	<asp:DropDownList ID="ddlSistema" class="form-control col-md-12"  style="border-color:#0a3147"  DataSourceID="odsServidores" DataTextField="descripcion" DataValueField="codigo" OnDataBound="ddlSistema_DataBound" runat="server"></asp:DropDownList>
+								<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="* Seleccione el sistema" ForeColor="Red" ControlToValidate="ddlSistema" InitialValue="SELEECIONAR SISTEMA"  Font-Bold="True"></asp:RequiredFieldValidator>
+							<%--<input type="text" class="form-control form-control-lg" placeholder="Email Address" required />--%>
+						</div>
 						<div class="form-group m-b-15">
                             <asp:TextBox ID="txtUsuario" class="form-control form-control-lg" placeholder="Nombre usuario" required runat="server"></asp:TextBox>
 							<%--<input type="text" class="form-control form-control-lg" placeholder="Email Address" required />--%>
@@ -88,7 +96,7 @@
 						</div>--%>
 						<hr />
 						<p class="text-center text-grey-darker">
-							&copy; AmasZonas All Right Reserved 2020
+							&copy; Portafolio All Right Reserved 2020
 						</p>
 					
 				</div>

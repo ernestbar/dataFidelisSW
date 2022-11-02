@@ -23,6 +23,7 @@ namespace proyDataFidelis
                 else
                 {
                     lblUsuario.Text = Session["usuario"].ToString();
+                    lblSistema.Text = Session["sistema"].ToString();
                     //btnNuevo.Visible = false;
                     lblCodMenuRol.Text = Request.QueryString["RME"].ToString();
                     //DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
@@ -54,14 +55,14 @@ namespace proyDataFidelis
                     cod_menu_padre = ddlMenuPadre.SelectedValue;
                 if (lblCodMenu.Text == "")
                 {
-                    Clases.Menus obj = new Clases.Menus("I", "", cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text);
+                    Clases.Menus obj = new Clases.Menus("I", "", cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text,lblSistema.Text);
                     lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
                 else
                 {
-                    Clases.Menus obj = new Clases.Menus("U", lblCodMenu.Text, cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text);
+                    Clases.Menus obj = new Clases.Menus("U", lblCodMenu.Text, cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text, lblSistema.Text);
                     lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
@@ -144,12 +145,12 @@ namespace proyDataFidelis
                 lblCodMenu.Text = datos[0];
                 if (datos[1] == "ACTIVO")
                 {
-                    Clases.Menus obj_m = new Clases.Menus("D", lblCodMenu.Text, "", "", "", lblUsuario.Text);
+                    Clases.Menus obj_m = new Clases.Menus("D", lblCodMenu.Text, "", "", "", lblUsuario.Text, lblSistema.Text);
                     lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
                 }
                 else
                 {
-                    Clases.Menus obj_m = new Clases.Menus("A", lblCodMenu.Text, "", "", "", lblUsuario.Text);
+                    Clases.Menus obj_m = new Clases.Menus("A", lblCodMenu.Text, "", "", "", lblUsuario.Text, lblSistema.Text);
                     lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
                 }
                   

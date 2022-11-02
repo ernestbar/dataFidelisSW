@@ -16,7 +16,7 @@
 		 </asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsCargo" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="proyDataFidelis.Clases.Dominios">
 			<SelectParameters>
-				<asp:Parameter DefaultValue="cargo" Name="PV_DOMINIO" Type="String" />
+				<asp:Parameter DefaultValue="CAR" Name="PV_DOMINIO" Type="String" />
 			</SelectParameters>
 		 </asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsExpedido" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="proyDataFidelis.Clases.Dominios">
@@ -298,7 +298,7 @@
 						<label class="col-md-3 text-md-right col-form-label">Rol:</label>
 						<div class="col-md-6">
                               <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlRol" InitialValue="SELECCIONAR" Font-Bold="True"></asp:RequiredFieldValidator>
-						    <asp:DropDownList ID="ddlRol"  ForeColor="Black" DataSourceID="odsRoles" OnDataBound="ddlSucursal_DataBound" DataTextField="DESCRIPCION" DataValueField="ROL" class="form-control" runat="server"></asp:DropDownList>
+						    <asp:DropDownList ID="ddlRol"  ForeColor="Black" DataSourceID="odsRoles" OnDataBound="ddlRol_DataBound" DataTextField="DESCRIPCION" DataValueField="ROL" class="form-control" runat="server"></asp:DropDownList>
 						</div>
                         
 					</div>

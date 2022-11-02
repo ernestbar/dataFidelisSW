@@ -24,6 +24,7 @@ namespace proyDataFidelis
                 {
                    // lblCodMenuRol.Text = Request.QueryString["RME"].ToString();
                     lblUsuario.Text = Session["usuario"].ToString();
+                    lblSistema.Text = Session["sistema"].ToString();
                     lblCodMenuRol.Text = Request.QueryString["RME"].ToString();
                     
                     

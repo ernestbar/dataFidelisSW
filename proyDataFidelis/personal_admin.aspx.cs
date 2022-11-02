@@ -45,32 +45,32 @@ namespace proyDataFidelis
 
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            if (e.Item.ItemType == ListItemType.Item ||
-               e.Item.ItemType == ListItemType.AlternatingItem)
-            {
-                Button bEliminar = (Button)e.Item.FindControl("btnEliminar");
-                Button bEdit = (Button)e.Item.FindControl("btnEditar");
-                Button bUsuarios = (Button)e.Item.FindControl("btnUsuarios");
-                bEdit.Visible = false;
-                bUsuarios.Visible = false;
-                bEliminar.Visible = false;
-                DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
-                if (dt.Rows.Count > 0)
-                {
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        if (dr["DESCRIPCION"].ToString().ToUpper() == "EDITAR")
-                            bEdit.Visible = true;
-                        if (dr["DESCRIPCION"].ToString().ToUpper() == "USUARIOS")
-                            bUsuarios.Visible = true;
-                        if (dr["DESCRIPCION"].ToString().ToUpper() == "ELIMINAR")
-                            bEliminar.Visible = true;
-                    }
+            //if (e.Item.ItemType == ListItemType.Item ||
+            //   e.Item.ItemType == ListItemType.AlternatingItem)
+            //{
+            //    Button bEliminar = (Button)e.Item.FindControl("btnEliminar");
+            //    Button bEdit = (Button)e.Item.FindControl("btnEditar");
+            //    Button bUsuarios = (Button)e.Item.FindControl("btnUsuarios");
+            //    bEdit.Visible = false;
+            //    bUsuarios.Visible = false;
+            //    bEliminar.Visible = false;
+            //    DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
+            //    if (dt.Rows.Count > 0)
+            //    {
+            //        foreach (DataRow dr in dt.Rows)
+            //        {
+            //            if (dr["DESCRIPCION"].ToString().ToUpper() == "EDITAR")
+            //                bEdit.Visible = true;
+            //            if (dr["DESCRIPCION"].ToString().ToUpper() == "USUARIOS")
+            //                bUsuarios.Visible = true;
+            //            if (dr["DESCRIPCION"].ToString().ToUpper() == "ELIMINAR")
+            //                bEliminar.Visible = true;
+            //        }
 
-                }
+            //    }
 
 
-            }
+            //}
         }
         public void limpiar_controles()
         {
@@ -442,6 +442,11 @@ namespace proyDataFidelis
 
 
             //}
+        }
+
+        protected void ddlRol_DataBound(object sender, EventArgs e)
+        {
+            ddlRol.Items.Insert(0, "SELECCIONAR");
         }
     }
 }
