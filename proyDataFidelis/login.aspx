@@ -38,7 +38,8 @@
 		<div class="login login-with-news-feed">
 			<!-- begin news-feed -->
 			<div class="news-feed">
-				<div class="news-image" style="background-image: url(assets/img/login-bg/fondo_login.jpg)"></div>
+				<video src="video1.mp4" autoplay muted loop></video>
+				<%--<div class="news-image" style="background-image: url(assets/img/login-bg/fondo_login.jpg)"></div>--%>
 				<div class="news-caption">
 					<h4 class="caption-title"><b>Porta</b>folio</h4>
 					<p>
@@ -51,7 +52,7 @@
 			<div class="right-content">
 				<!-- begin login-header -->
 				<div class="login-header">
-					<img src="assets/img/logo/bannerportafolio.png"  height="135"/>
+					<img src="assets/img/logo/logo_suiza_fidelis.png"  width="380"/>
 						
 				
 					<div class="icon">
