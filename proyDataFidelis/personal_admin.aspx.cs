@@ -79,7 +79,7 @@ namespace proyDataFidelis
             txtEmail.Text = "";
             txtNombres.Text = "";
             txtNumeroDocumento.Text = "";
-            txtUsuario.Text = "";
+           // txtUsuario.Text = "";
             lblFechaDesde.Text = "";
             lblFechaHasta.Text = "";
             ddlExpedido.DataBind();
@@ -92,7 +92,10 @@ namespace proyDataFidelis
         {
             limpiar_controles();
             MultiView1.ActiveViewIndex = 1;
+            hfFechaSalida.Value = DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString();
+            //hfFechaRetorno.Value = DateTime.Now.AddYears(1).Year.ToString() + "-" + DateTime.Now.AddYears(1).Month.ToString() + "-" + DateTime.Now.AddYears(1).Day.ToString();
 
+            ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -120,7 +123,8 @@ namespace proyDataFidelis
                 ddlSucursal.SelectedValue = cli.PV_COD_SUCURSAL;
                 ddlTipoDocumento.DataBind();
                 ddlTipoDocumento.SelectedValue = cli.PV_TIPO_DOCUMENTO;
-
+                if (cli.PV_SUPERVISOR_INMEDIATO != "")
+                    ddlSupervisor.SelectedValue = cli.PV_SUPERVISOR_INMEDIATO;
                 DataTable dt = new DataTable();
                 dt = Clases.Usuarios.PR_PAR_GET_USUARIOS(lblCodPersonal.Text);
                 if (dt.Rows.Count > 0)
@@ -128,11 +132,61 @@ namespace proyDataFidelis
                     foreach (DataRow dr in dt.Rows)
                     {
                         lblCodUsuarioI.Text = dr["usuario"].ToString();
-                        txtUsuario.Text = dr["usuario"].ToString();
+                       // txtUsuario.Text = dr["usuario"].ToString();
                         txtDescripcion.Text = dr["descripcion"].ToString();
                         lblFechaDesde.Text = dr["fecha_desde"].ToString();
                         lblFechaHasta.Text = dr["fecha_hasta"].ToString();
                         ddlRol.SelectedValue = dr["rol"].ToString();
+                        if (dr["fecha_desde"].ToString() == "")
+                        {
+                            DateTime fecha1 = DateTime.Now;
+                            string dia = "";
+                            string mes = "";
+                            if (fecha1.Day.ToString().Length == 1)
+                                dia = "0" + fecha1.Day.ToString();
+                            else
+                                dia = fecha1.Day.ToString();
+                            if (fecha1.Month.ToString().Length == 1)
+                                mes = "0" + fecha1.Month.ToString();
+                            else
+                                mes = fecha1.Month.ToString();
+                            hfFechaSalida.Value = fecha1.Year.ToString() + "-" + mes + "-" + dia;
+                            ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+                        }
+                        else
+                        {
+                            DateTime fecha1 = DateTime.Parse(dr["fecha_desde"].ToString());
+                            string dia = "";
+                            string mes = "";
+                            if (fecha1.Day.ToString().Length == 1)
+                                dia = "0" + fecha1.Day.ToString();
+                            else
+                                dia = fecha1.Day.ToString();
+
+                            if (fecha1.Month.ToString().Length == 1)
+                                mes = "0" + fecha1.Month.ToString();
+                            else
+                                mes = fecha1.Month.ToString();
+                            hfFechaSalida.Value = fecha1.Year.ToString() + "-" + mes + "-" + dia;
+                            ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+                        }
+                        if (dr["fecha_hasta"].ToString() != "")
+                        {
+                            DateTime fecha2 = DateTime.Parse(dr["fecha_hasta"].ToString());
+                            string dia = "";
+                            string mes = "";
+                            if (fecha2.Day.ToString().Length == 1)
+                                dia = "0" + fecha2.Day.ToString();
+                            else
+                                dia = fecha2.Day.ToString();
+
+                            if (fecha2.Month.ToString().Length == 1)
+                                mes = "0" + fecha2.Month.ToString();
+                            else
+                                mes = fecha2.Month.ToString();
+                            hfFechaRetorno.Value = fecha2.Year.ToString() + "-" + mes + "-" + dia;
+                            ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta2", "setearFechaRetorno();", true);
+                        }
                     }
                 }
 
@@ -224,6 +278,13 @@ namespace proyDataFidelis
                 string fecha_retorno = "01/01/3000";
                 if (hfFechaRetorno.Value != "")
                     fecha_retorno = hfFechaRetorno.Value;
+                string fecha_salida = "01/01/3000";
+                if (hfFechaSalida.Value != "")
+                    fecha_salida = hfFechaSalida.Value;
+
+                //string fecha_retorno = "01/01/3000";
+                //if (hfFechaRetorno.Value != "")
+                //    fecha_retorno = hfFechaRetorno.Value;
 
                 string[] datos_cargo = ddlCargo.SelectedValue.Split('&');
                 string aux = "";
@@ -232,25 +293,18 @@ namespace proyDataFidelis
                     Clases.Usuarios per = new Clases.Usuarios("I","",ddlSupervisor.SelectedValue,ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
                         ddlCargo.SelectedValue,int.Parse(txtCelular.Text),int.Parse(txtFijo.Text),int.Parse(txtInterno.Text),
-                        txtEmail.Text,txtUsuario.Text,"","", txtDescripcion.Text, DateTime.Parse(hfFechaSalida.Value),DateTime.Parse(fecha_retorno),ddlRol.SelectedValue,lblUsuario.Text);
+                        txtEmail.Text, txtEmail.Text,"","", txtDescripcion.Text, DateTime.Parse(fecha_salida),DateTime.Parse(fecha_retorno),ddlRol.SelectedValue,lblUsuario.Text);
                     aux = per.ABM();
+                    Clases.enviar_correo objC = new Clases.enviar_correo();
+                    string resultado2 = objC.enviar(txtEmail.Text, "Registro de usario " + txtEmail.Text, "Bienvenido estimado usuario:" + txtEmail.Text + "<br/><br/> Su password temporal es el 123: <br/><br/>" + " <br/><br/> Ahora debe ingresar al sistema del siguiente link: <br/><br/>" + "https://200.105.209.42:5559" + "<br/><br/>Saludos coordiales.", "");
                 }
                 else
                 {
-                    string fecha_desde = "";
-                    string fecha_hasta = "";
-                    if (hfFechaSalida.Value == "")
-                    {fecha_desde = lblFechaDesde.Text;}
-                    else
-                    { fecha_desde = hfFechaSalida.Value; }
-                    if (hfFechaRetorno.Value == "")
-                    { fecha_hasta = lblFechaHasta.Text; }
-                    else
-                    { fecha_hasta = hfFechaRetorno.Value; }
+                    
                     Clases.Usuarios per = new Clases.Usuarios("U", lblCodPersonal.Text, ddlSupervisor.SelectedValue, ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
                         ddlCargo.SelectedValue, int.Parse(txtCelular.Text), int.Parse(txtFijo.Text), int.Parse(txtInterno.Text),
-                        txtEmail.Text, txtUsuario.Text, "", "", txtDescripcion.Text, DateTime.Parse(fecha_desde), DateTime.Parse(fecha_hasta), ddlRol.SelectedValue, lblUsuario.Text);
+                        txtEmail.Text, txtEmail.Text, "", "", txtDescripcion.Text, DateTime.Parse(fecha_salida), DateTime.Parse(fecha_retorno), ddlRol.SelectedValue, lblUsuario.Text);
                     aux = per.ABM();
                 }
 
@@ -341,7 +395,8 @@ namespace proyDataFidelis
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su password NO se reseteo correctamente a 123');", true);
                 }
-
+                Clases.enviar_correo objC = new Clases.enviar_correo();
+                string resultado2 = objC.enviar(id, "Reseteo de contraseña del usuario " + id, "Estimado usuario :" + "<br/><br/> Su password temporal es el 123: <br/><br/>" + " <br/><br/> Ahora debe ingresar al sistema del siguiente link: <br/><br/>" + "https://200.105.209.42:5559" + "<br/><br/>Saludos coordiales.", "");
                 //PASSWORD CORRECTAMENTE REGISTRADO
 
             }
