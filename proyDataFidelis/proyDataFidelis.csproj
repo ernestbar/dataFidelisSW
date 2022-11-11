@@ -329,6 +329,7 @@
     <Content Include="assets\img\gochasqui\trabaja_con_nosotros.jpg" />
     <Content Include="assets\img\gochasqui\TRANSPORTE B.png" />
     <Content Include="assets\img\gochasqui\TRANSPORTE.png" />
+    <Content Include="assets\img\iconos\actualizar.png" />
     <Content Include="assets\img\logo\bannerportafolio.png" />
     <Content Include="assets\img\login-bg\fondo_login.jpg" />
     <Content Include="assets\img\login-bg\login-bg-1-thumb.jpg" />
@@ -3334,6 +3335,7 @@
     <Content Include="cambio_password.aspx" />
     <Content Include="dashboard.aspx" />
     <Content Include="dominio_admin.aspx" />
+    <Content Include="esquema_contable.aspx" />
     <Content Include="login.aspx" />
     <Content Include="menus_admin.aspx" />
     <Content Include="menu_rol_admin.aspx" />
@@ -3364,6 +3366,7 @@
     <Compile Include="Clases\Roles.cs" />
     <Compile Include="Clases\Sucursales.cs" />
     <Compile Include="Clases\Usuarios.cs" />
+    <Compile Include="Clases\Utiles.cs" />
     <Compile Include="dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3377,6 +3380,13 @@
     </Compile>
     <Compile Include="dominio_admin.aspx.designer.cs">
       <DependentUpon>dominio_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="esquema_contable.aspx.cs">
+      <DependentUpon>esquema_contable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="esquema_contable.aspx.designer.cs">
+      <DependentUpon>esquema_contable.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

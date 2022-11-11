@@ -309,7 +309,7 @@ namespace proyDataFidelis
                 }
 
                 string[] datos = aux.Split('|');
-                lblAviso.Text = datos[3];
+                lblAviso.Text = datos[2];
                 MultiView1.ActiveViewIndex = 0;
                 Repeater1.DataBind();
             }
@@ -502,6 +502,11 @@ namespace proyDataFidelis
         protected void ddlRol_DataBound(object sender, EventArgs e)
         {
             ddlRol.Items.Insert(0, "SELECCIONAR");
+        }
+        protected void btnVolverPersonal_Click(object sender, EventArgs e)
+        {
+            lblAviso.Text = "";
+            MultiView1.ActiveViewIndex = 0;
         }
     }
 }
