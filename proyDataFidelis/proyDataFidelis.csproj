@@ -3333,6 +3333,8 @@
     <Content Include="assets\plugins\slimscroll\jquery.slimscroll.js" />
     <Content Include="assets\plugins\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="cambio_password.aspx" />
+    <Content Include="clientes_admin.aspx" />
+    <Content Include="cuentas_admin.aspx" />
     <Content Include="dashboard.aspx" />
     <Content Include="dominio_admin.aspx" />
     <Content Include="esquema_contable.aspx" />
@@ -3355,7 +3357,8 @@
     <Compile Include="cambio_password.aspx.designer.cs">
       <DependentUpon>cambio_password.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clases\clientes.cs" />
+    <Compile Include="Clases\Clientes.cs" />
+    <Compile Include="Clases\Cuentas.cs" />
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\enviar_correo.cs" />
     <Compile Include="Clases\Menus.cs" />
@@ -3367,6 +3370,20 @@
     <Compile Include="Clases\Sucursales.cs" />
     <Compile Include="Clases\Usuarios.cs" />
     <Compile Include="Clases\Utiles.cs" />
+    <Compile Include="clientes_admin.aspx.cs">
+      <DependentUpon>clientes_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="clientes_admin.aspx.designer.cs">
+      <DependentUpon>clientes_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cuentas_admin.aspx.cs">
+      <DependentUpon>cuentas_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cuentas_admin.aspx.designer.cs">
+      <DependentUpon>cuentas_admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
