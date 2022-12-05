@@ -81,7 +81,25 @@ namespace proyDataFidelis.Clases
             }
 
         }
-        
+        public static DataTable PR_GET_CUENTASCLIENTES(string PV_BANCO)
+        {
+            try
+            {
+
+                DbCommand cmd = db1.GetStoredProcCommand("PR_GET_CUENTASCLIENTES");
+
+                db1.AddInParameter(cmd, "PV_BANCO", DbType.String, PV_BANCO);
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
         #endregion
 
         #region Métodos que requieren constructor

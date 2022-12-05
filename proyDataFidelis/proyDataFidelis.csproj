@@ -3333,6 +3333,7 @@
     <Content Include="assets\plugins\slimscroll\jquery.slimscroll.js" />
     <Content Include="assets\plugins\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="cambio_password.aspx" />
+    <Content Include="caso_uno.aspx" />
     <Content Include="clientes_admin.aspx" />
     <Content Include="cuentas_admin.aspx" />
     <Content Include="dashboard.aspx" />
@@ -3356,6 +3357,13 @@
     </Compile>
     <Compile Include="cambio_password.aspx.designer.cs">
       <DependentUpon>cambio_password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="caso_uno.aspx.cs">
+      <DependentUpon>caso_uno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="caso_uno.aspx.designer.cs">
+      <DependentUpon>caso_uno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Clases\Clientes.cs" />
     <Compile Include="Clases\Cuentas.cs" />
