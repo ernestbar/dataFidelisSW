@@ -57,6 +57,8 @@ namespace proyDataFidelis
             string[] aux= Clases.Utiles.PR_GET_CASO_USO1B("C", ddlCuenta.SelectedValue, ddlTrimestre.SelectedValue, 0, 0, 0, 0, 0, lblUsuario.Text).Split('|');
             txtFEEFS.Text = aux[0];
             txtFEEBANCO.Text = aux[1];
+            string[] aux2 = ddlCuenta.SelectedItem.Text.Split('/');
+            lblNomCliente.Text = aux2[1];
             MultiView1.ActiveViewIndex = 1;
         }
 
@@ -72,11 +74,11 @@ namespace proyDataFidelis
             {
                 TextBox text1 = (TextBox)Item.FindControl("TextBox1");
                 if (p == 0)
-                    p1 = decimal.Parse(text1.Text.Replace("$","").Replace(" ",""));
+                    p1 = decimal.Parse(text1.Text.Replace("$","").Replace(" ","").Replace(".", decSep).Replace(",", decSep));
                 if (p == 1)
-                    p2 = decimal.Parse(text1.Text.Replace("$", "").Replace(" ", ""));
+                    p2 = decimal.Parse(text1.Text.Replace("$", "").Replace(" ", "").Replace(".", decSep).Replace(",", decSep));
                 if (p == 2)
-                    p3 = decimal.Parse(text1.Text.Replace("$", "").Replace(" ", ""));
+                    p3 = decimal.Parse(text1.Text.Replace("$", "").Replace(" ", "").Replace(".", decSep).Replace(",", decSep));
                 p++;
             }
 

@@ -1,5 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="caso_uno.aspx.cs" Inherits="proyDataFidelis.caso_uno" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+	<style>
+      .table-striped>tbody>tr:nth-child(odd)>td, 
+      .table-striped>tbody>tr:nth-child(odd)>th {
+       background-color: #F2EFEE;
+      }
+      .table-striped>tbody>tr:nth-child(even)>td, 
+      .table-striped>tbody>tr:nth-child(even)>th {
+       background-color: #fff;
+      }
+      .table-striped>thead>tr>th {
+         background-color: #17a2b8;
+      }
+    </style>
 	 <asp:ObjectDataSource ID="odsBanco" runat="server" SelectMethod="PR_GET_BANCOS" TypeName="proyDataFidelis.Clases.Dominios">
 		</asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsCuenta" runat="server" SelectMethod="PR_GET_CUENTASCLIENTES" TypeName="proyDataFidelis.Clases.Cuentas">
@@ -63,7 +76,7 @@
 								<!-- begin form-group row -->
 										<div class="form-group row m-b-10">
 											
-											<div class="col-md-6">
+											<div class="col-md-4">
                                                 <asp:Button ID="btnVolver" class="btn-sm btn-info btn-block" OnClick="btnVolver_Click" runat="server" Text="Volver" />
 												<%--<input type="text" name="Ruta" placeholder="" class="form-control" />--%>
 											</div>
@@ -73,25 +86,27 @@
 					<div class="form-group row m-b-12">
 						<label class="col-md-3 text-md-right col-form-label">FEE SF (%):</label>
 						<div class="col-md-1">
-                             <asp:TextBox ID="txtFEEFS" class="form-control" Text="0" runat="server"></asp:TextBox>
+                             <asp:TextBox ID="txtFEEFS" ForeColor="Black" BorderStyle="Solid" BorderColor="#FF5050" class="form-control" Text="0" runat="server"></asp:TextBox>
 						</div>
 							<label class="col-md-3 text-md-right col-form-label">FEE BANCO ($):</label>
 						<div class="col-md-1">
-                             <asp:TextBox ID="txtFEEBANCO" class="form-control" Text="0" runat="server"></asp:TextBox>
+                             <asp:TextBox ID="txtFEEBANCO" ForeColor="Black" BorderStyle="Solid" BorderColor="#FF5050" class="form-control" Text="0" runat="server"></asp:TextBox>
 						</div>
 					</div>
+			<hr />
 					<!-- end form-group row -->
+			<h1 class="page-header" style="text-align:center">PORTAFOLIO CLIENTE: <asp:Label ID="lblNomCliente" runat="server" Text=""></asp:Label><small></small></h1>
 			<div class="table-responsive">
 				<!-- begin panel-body -->
 				<div class="panel-body">
 				<%--<div class="table-responsive">--%>
-				<table id="data-table-default1" class="table table-striped table-bordered" style="width:600px">
+				<table id="data-table-default3" class="table table-striped table-bordered">
 					<thead>
-						<tr>
-							<th class="text-nowrap" style="width:100px">Período</th>
-							<th class="text-nowrap" style="width:100px">Portafolio Valor</th>
-							<th class="text-nowrap" style="width:40px">Fees L.</th>
-							<th class="text-nowrap" style="width:100px">Fees Q.</th>
+						<tr style="background-color:cadetblue">
+							<th class="text-nowrap">Período</th>
+							<th class="text-nowrap">Portafolio Valor</th>
+							<th class="text-nowrap">Fees L.</th>
+							<th class="text-nowrap">Fees Q.</th>
 							<th class="text-nowrap" data-orderable="false">OPCIONES</th>
 							</tr>
 					</thead>
@@ -100,7 +115,7 @@
 						<ItemTemplate>
 							<tr class="gradeA">
 							<td><asp:Label ID="lblNombre" runat="server" Text='<%# Eval("PERIODO") %>'></asp:Label></td>
-								<td><asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Width="100" Text='<%# Eval("PORTAFOLIO_VAL") %>'></asp:TextBox> </td>
+								<td><asp:TextBox ID="TextBox1" CssClass="form-control" ForeColor="Black" BorderStyle="Solid" BorderColor="#FF5050"  runat="server" Width="150" Text='<%# Eval("PORTAFOLIO_VAL") %>' ></asp:TextBox> </td>
 								<td><asp:Label ID="lblMaterno" runat="server" Text='<%# Eval("FEES_L") %>'></asp:Label></td>
 								<td><asp:Label ID="lblMarital" runat="server" Text='<%# Eval("FEES_Q") %>'></asp:Label></td>
 							<td>
@@ -117,13 +132,15 @@
 			</div>
 			<!-- end table-responsive -->
 			</div>
-			<div class="table-responsive">
+			<hr />
+			<h1 class="page-header" style="text-align:center">FEE SUIZAFIDELIS<small></small></h1>
+				<div class="table-responsive offset-4">
 				<!-- begin panel-body -->
 				<div class="panel-body">
 				<%--<div class="table-responsive">--%>
-				<table id="data-table-default2" class="table table-striped table-bordered" style="width:600px">
+				<table id="data-table-default2" class="table table-striped table-bordered" style="width:600px" >
 					<thead>
-						<tr>
+						<tr style="background-color:cadetblue;text-align:center">
 							<th class="text-wrap" style="width:50px">CUENTA</th>
 							<th class="text-nowrap" style="width:100px">FEES FS</th>
 						</tr>
@@ -135,7 +152,7 @@
 							<td><asp:Label ID="lblNombre" runat="server" Text='<%# Eval("CUENTA") %>'></asp:Label></td>
 								<td><asp:Label ID="lblMaterno" runat="server" Text='<%# Eval("FEES_SF") %>'></asp:Label></td>
 							</td>
-						</tr>
+							</tr>
 						</ItemTemplate>
 						</asp:Repeater>
 														
@@ -146,6 +163,9 @@
 			</div>
 			<!-- end table-responsive -->
 			</div>
+
+			
+			
 		</asp:View>
     </asp:MultiView>
 	
