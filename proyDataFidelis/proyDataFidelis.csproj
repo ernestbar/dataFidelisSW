@@ -3336,6 +3336,7 @@
     <Content Include="caso_uno.aspx" />
     <Content Include="clientes_admin.aspx" />
     <Content Include="cuentas_admin.aspx" />
+    <Content Include="cuentas_personal.aspx" />
     <Content Include="dashboard.aspx" />
     <Content Include="dominio_admin.aspx" />
     <Content Include="esquema_contable.aspx" />
@@ -3367,6 +3368,7 @@
     </Compile>
     <Compile Include="Clases\Clientes.cs" />
     <Compile Include="Clases\Cuentas.cs" />
+    <Compile Include="Clases\Cuentas_personal.cs" />
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\enviar_correo.cs" />
     <Compile Include="Clases\Menus.cs" />
@@ -3391,6 +3393,13 @@
     </Compile>
     <Compile Include="cuentas_admin.aspx.designer.cs">
       <DependentUpon>cuentas_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cuentas_personal.aspx.cs">
+      <DependentUpon>cuentas_personal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cuentas_personal.aspx.designer.cs">
+      <DependentUpon>cuentas_personal.aspx</DependentUpon>
     </Compile>
     <Compile Include="dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>

@@ -18,6 +18,7 @@
 	<asp:ObjectDataSource ID="odsCuenta" runat="server" SelectMethod="PR_GET_CUENTASCLIENTES" TypeName="proyDataFidelis.Clases.Cuentas">
         <SelectParameters>
             <asp:ControlParameter ControlID="ddlBanco" Name="PV_BANCO" Type="String" />
+            <asp:ControlParameter ControlID="lblUsuario" Name="PV_USUARIO" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsTrimestre" runat="server" SelectMethod="PR_GET_TRIMESTRES" TypeName="proyDataFidelis.Clases.Utiles">

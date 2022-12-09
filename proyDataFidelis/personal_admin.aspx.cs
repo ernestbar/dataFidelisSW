@@ -292,7 +292,7 @@ namespace proyDataFidelis
                 {
                     Clases.Usuarios per = new Clases.Usuarios("I","",ddlSupervisor.SelectedValue,ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
-                        ddlCargo.SelectedValue,int.Parse(txtCelular.Text),int.Parse(txtFijo.Text),int.Parse(txtInterno.Text),
+                        ddlCargo.SelectedValue, Int64.Parse(txtCelular.Text), Int64.Parse(txtFijo.Text), Int64.Parse(txtInterno.Text),
                         txtEmail.Text, txtEmail.Text,"","", txtDescripcion.Text, DateTime.Parse(fecha_salida),DateTime.Parse(fecha_retorno),ddlRol.SelectedValue,lblUsuario.Text);
                     aux = per.ABM();
                     Clases.enviar_correo objC = new Clases.enviar_correo();
@@ -303,7 +303,7 @@ namespace proyDataFidelis
                     
                     Clases.Usuarios per = new Clases.Usuarios("U", lblCodPersonal.Text, ddlSupervisor.SelectedValue, ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
-                        ddlCargo.SelectedValue, int.Parse(txtCelular.Text), int.Parse(txtFijo.Text), int.Parse(txtInterno.Text),
+                        ddlCargo.SelectedValue, Int64.Parse(txtCelular.Text), Int64.Parse(txtFijo.Text), Int64.Parse(txtInterno.Text),
                         txtEmail.Text, txtEmail.Text, "", "", txtDescripcion.Text, DateTime.Parse(fecha_salida), DateTime.Parse(fecha_retorno), ddlRol.SelectedValue, lblUsuario.Text);
                     aux = per.ABM();
                 }
